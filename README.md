@@ -1,7 +1,6 @@
-﻿# <img width="123" height="38" alt="logo" src="https://github.com/user-attachments/assets/af863b77-e603-4838-a6b2-cb76f028a03d" />  
 
-## 개인프로젝트
-#### 프로젝트명: MSA기반의 ERP
+#### 프로젝트명: MAS에 중점을 둔 ERP 시스템
+#### 개발자: 손보연  
 
 ---
 
@@ -20,45 +19,47 @@
 ---
 
 ## 프로젝트 소개
-MSA기반의 ERP 프로그램입니다
+**ERP**는 JWT의 인증을 이용해 사용자에게 권한을 부여하고, 상품의 재고사항을 실시간으로 관리하는 프로그램입니다.  
+프론트는 veus.js의 React 기반으로 UX를 구성하고, 백엔드는 Spring Boot REST API로 도메인별 책임을 분리하고 MariaDb를 썼습니다.
 
 ---
 
 ## 프로젝트 설계
+Learning Management System (개인 프로젝트)
 1. 요구사항 명세서 
 
-<img width="8192" height="4160" alt="erp-erd" src="https://github.com/user-attachments/assets/e899f96f-0e57-412c-b641-908d0a6da676" />
+<img height="100" alt="erd - 요구사항명세표" src="https://github.com/user-attachments/assets/c304e30c-43e5-47f1-80b5-d4a481412d31" />
+
+
 
 2. 화면 정의서 (Wireframe / 화면설계서)
+
 
 <img  height="100" alt="6번" src="https://github.com/user-attachments/assets/3b461c12-ed61-4291-a247-cd52ebbe2c13" />             <img height="100" alt="7번" src="https://github.com/user-attachments/assets/3a064bc8-1611-4384-a825-ddcf1b7a9a5f" />             <img height="100" alt="8번" src="https://github.com/user-attachments/assets/fe7bbaf3-6efe-4c63-85c1-9cb332dd2c95" />
 
 3. (UML) 유스케이스 다이어그램 - Usecase Diagram 
 
-<imgheight="100" alt="ERP-usecase" src="https://github.com/user-attachments/assets/6c1aeff8-34bc-4483-8684-0e41162d5c5f" />
-
+<img width="200" alt="유스케이스다이어그램" src="https://github.com/user-attachments/assets/94ae3908-b891-4cf5-acc1-3aa13671ea01" />
 
 4. (UML) 시퀀스 다이어그램 - Sequence Diagram 
 
-<img height="100" alt="ERP-sequence인사" src="https://github.com/user-attachments/assets/34993a5c-d7b8-4c6c-91e2-d5aa99bc873e" />   <img  height="100" alt="ERP-sequence물류" src="https://github.com/user-attachments/assets/c848e2f6-b672-4ae0-9453-f6c0ca7b99f3" />
+<img width="200" alt="씨퀀스 다이어그램" src="https://github.com/user-attachments/assets/9ecfa7b0-9ba9-4340-a79a-923528d2bc89" />
 
 
 5. (UML) 클래스 다이어그램 - Class Diagram 
 
-<img width="5138" height="3255" alt="ERP-class" src="https://github.com/user-attachments/assets/11939fa8-63bc-46aa-baec-b7b0d78be146" />
-
+<img width="250"  alt="4번" src="https://github.com/user-attachments/assets/b7431192-a567-4e1b-9cf5-b2d37f461bd0" /><img width="250"  alt="5번" src="https://github.com/user-attachments/assets/ad1ff722-eb5f-4853-92e0-8c65adf3dd78" />
 
 6. ERD Diagram 
 
 ### 데이터베이스 (ERD Diagram) 
-1. logical
-<img width="1214" height="627" alt="ERP-erd로지컬" src="https://github.com/user-attachments/assets/51260b6f-c023-477f-bea7-2f5e69343966" />
 
-2. physical.jpg
-<img width="1214" height="627" alt="erp-erd" src="https://github.com/user-attachments/assets/55eeaef4-abbf-42dc-9227-269fc304817f" />
+<img width="250" alt="lms-erd" src="https://github.com/user-attachments/assets/d2e9a1bd-5625-410a-8852-ac005b487dad" />
 
 
-## 기술 스펙
+
+
+## 기술 스펙![Uploading lms-erd.png…]()
 
 ### 🔹 Backend (API & Core Service)
 > **비즈니스 로직 / 인증·인가 / 데이터 접근 계층 중심**  
@@ -256,5 +257,3 @@ https://github.com/user-attachments/assets/a095d075-e0a3-43f2-9e69-42faf59850e7
 ## LIMITREE 프레젠테이션
 - [발표자료 보기](_260122.LIMITREE._REV1.pdf)
 
-
- 
