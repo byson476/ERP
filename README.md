@@ -92,8 +92,7 @@ Learning Management System (개인 프로젝트)
 
 
 
-## 기술 스펙![Uploading lms-erd.png…]()
-
+## 기술 스펙
 ### 🔹 Backend (API & Core Service)
 > **비즈니스 로직 / 인증·인가 / 데이터 접근 계층 중심**  
 > REST API 제공, Spring Security로 인증/인가 처리, JPA로 DB 연동을 담당합니다.
