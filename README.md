@@ -58,8 +58,12 @@ Learning Management System (개인 프로젝트)
 6. ERD Diagram 
 
 ### 데이터베이스 (ERD Diagram) 
+1. logical
+<img width="1214" height="627" alt="ERP-erd로지컬" src="https://github.com/user-attachments/assets/cbdd869f-04af-49ef-bc1c-db9e173058dc" />
 
-<img width="250" alt="lms-erd" src="https://github.com/user-attachments/assets/d2e9a1bd-5625-410a-8852-ac005b487dad" />
+2. physical.jpg
+<img width="1214" height="627" alt="limitree-physical" src="https://github.com/user-attachments/assets/54ee9cee-91f8-40e6-b4ad-eed218c80821" />
+
 
 
 
