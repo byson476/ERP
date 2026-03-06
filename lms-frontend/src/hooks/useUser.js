@@ -1,0 +1,480 @@
+import { useEffect, useState, useCallback, useRef , useContext } from 'react';
+import * as userApi from '../api/userApi';
+import * as responseStatusCode from '../api/ResponseStatusCode';
+import { getCookie, setCookie, removeCookie } from '../util/cookieUtil';
+import { UserContext } from "../App";
+
+//관리자 - 학생 목록 화면
+export function useAdminStudentlist() {
+
+  /* =============================
+     상태
+  ============================== */
+  const [students, setStudents] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const allCheckRef = useRef(null);
+
+  const { loginStatus } = useContext(UserContext);
+  const loginUser = loginStatus?.loginUser;
+  const userId = loginUser?.userId;
+
+  /* =============================
+     🔥 학생 목록 조회 API
+  ============================== */
+  const fetchStudents = async () => {
+    try {
+      setLoading(true);
+      const response = await userApi.useAdminStudentlist(userId);
+      const result = response.data;
+      setStudents(Array.isArray(result) ? result : result.data || []);
+      //setStudents(response.data);
+    } catch (err) {
+      console.error(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* 최초 로딩 */
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  /* =============================
+     개별 선택
+  ============================== */
+  const handleCheck = (studentId) => {
+    setSelectedIds((prev) =>
+      prev.includes(studentId)
+        ? prev.filter((id) => id !== studentId)
+        : [...prev, studentId]
+    );
+  };
+
+  /* =============================
+     전체 선택
+  ============================== */
+  const handleAllCheck = (e) => {
+    if (e.target.checked) {
+      setSelectedIds(students.map((s) => s.studentId));
+    } else {
+      setSelectedIds([]);
+    }
+  };
+
+  /* =============================
+     전체 선택 여부
+  ============================== */
+  const isAllChecked =
+    students.length > 0 &&
+    selectedIds.length === students.length;
+
+  /* =============================
+     indeterminate 처리
+  ============================== */
+  useEffect(() => {
+    if (allCheckRef.current) {
+      allCheckRef.current.indeterminate =
+        selectedIds.length > 0 &&
+        selectedIds.length < students.length;
+    }
+  }, [selectedIds, students.length]);
+
+  /* =============================
+     🔥 학생 삭제 API
+  ============================== */
+  const deleteStudents = async () => {
+    if (selectedIds.length === 0) return;
+
+    try {
+      for (const studentId of selectedIds) {
+        await userApi.useAdminDeleteStudent(userId, studentId);
+      }
+
+      // 화면에서 제거 (optimistic update)
+      setStudents((prev) =>
+        prev.filter((student) =>
+          !selectedIds.includes(student.studentId)
+        )
+      );
+
+      setSelectedIds([]); // 선택 초기화
+    } catch (err) {
+      console.error(err);
+      alert("삭제 실패");
+    }
+  };
+
+  /* =============================
+     외부에서 새로고침 가능
+  ============================== */
+  const reload = () => {
+    fetchStudents();
+  };
+
+  return {
+    students,
+    loading,
+    error,
+
+    selectedIds,
+    handleCheck,
+    handleAllCheck,
+    isAllChecked,
+    allCheckRef,
+
+    deleteStudents,
+    reload,
+  };
+}
+
+//관리자 - 강사 목록 화면
+export function useAdminTutorlist() {
+
+  const [tutors, setTutors] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const allCheckRef = useRef(null);
+
+  const { loginStatus } = useContext(UserContext);
+  const loginUser = loginStatus?.loginUser;
+  const adminId = loginUser?.userId;
+
+  /* 🔥 강사 목록 조회 */
+  const fetchTutors = async () => {
+    try {
+      setLoading(true);
+
+      const response = await userApi.useAdminTutorlist(adminId);
+      const result = response.data;
+
+      const tutorList = Array.isArray(result)
+        ? result
+        : result?.data || [];
+
+      setTutors(tutorList);
+
+    } catch (err) {
+      console.error(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (adminId) {
+      fetchTutors();
+    }
+  }, [adminId]);
+
+  /* 🔥 개별 체크 */
+  const handleCheck = (tutorId) => {
+    setSelectedIds((prev) =>
+      prev.includes(tutorId)
+        ? prev.filter((id) => id !== tutorId)
+        : [...prev, tutorId]
+    );
+  };
+
+  /* 🔥 전체 체크 */
+  const handleAllCheck = (e) => {
+    if (e.target.checked) {
+      setSelectedIds(tutors.map((t) => t.tutorId));
+    } else {
+      setSelectedIds([]);
+    }
+  };
+
+  const isAllChecked =
+    tutors.length > 0 &&
+    selectedIds.length === tutors.length;
+
+  /* 🔥 indeterminate 처리 */
+  useEffect(() => {
+    if (allCheckRef.current) {
+      allCheckRef.current.indeterminate =
+        selectedIds.length > 0 &&
+        selectedIds.length < tutors.length;
+    }
+  }, [selectedIds, tutors.length]);
+
+  /* 🔥 선택 삭제 */
+  const deleteTutors = async () => {
+
+    if (selectedIds.length === 0) return;
+
+    try {
+
+      await Promise.all(
+        selectedIds.map((tutorId) =>
+          userApi.useAdminDeleteTutor(adminId, tutorId)
+        )
+      );
+
+      // 화면에서도 제거
+      setTutors((prev) =>
+        prev.filter((t) =>
+          !selectedIds.includes(t.tutorId)
+        )
+      );
+
+      setSelectedIds([]);
+
+      alert("삭제 완료");
+
+    } catch (err) {
+      console.error(err);
+      alert("삭제 실패");
+    }
+  };
+
+  return {
+    tutors,
+    loading,
+    error,
+    selectedIds,
+    handleCheck,
+    handleAllCheck,
+    isAllChecked,
+    allCheckRef,
+    deleteTutors,
+  };
+}
+
+
+
+//관리자 - 학생/강사/관리자 등록 화면
+export const useAlluserRegist = () => {
+  const [formData, setFormData] = useState({
+    userId: "",
+    password: "",
+    name: "",
+    email: "",
+    role: "STUDENT",
+    social: false,
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleChange = useCallback((e) => {
+    const { name, value, type, checked } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  }, []);
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      setError(null);
+
+      console.log("회원가입 요청 데이터:", formData);
+
+      // 🔥 실제 API 연결 시
+       const response = await userApi.useAlluserRegist(formData);
+       console.log(response);
+
+      alert("회원가입 요청 완료");
+
+    } catch (err) {
+      console.error("회원가입 실패", err);
+      setError("회원가입 중 오류가 발생했습니다.");
+    } finally {
+      setLoading(false);
+    }
+  }, [formData]);
+
+  return {
+    formData,
+    loading,
+    error,
+    handleChange,
+    handleSubmit,
+  };
+};
+
+
+
+export const useUser = () => {
+  const [loginUser, setLoginUser] = useState(null);
+  const [isLogin, setIsLogin] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // ✅ 새로고침 시 쿠키로 로그인 상태 복구
+  useEffect(() => {
+    const memberStr = getCookie('member');
+    if (memberStr) {
+      try {
+        const member = JSON.parse(memberStr);
+        setLoginUser(member);
+        setIsLogin(true);
+      } catch (e) {
+        removeCookie('member');
+      }
+    }
+    setLoading(false);
+  }, []);
+  const applyLogin = (memberData) => {
+  setLoginUser(memberData);
+  setIsLogin(true);
+};
+
+
+  /**
+   * 로그인
+   */
+  const login = async ({ userId, password }) => {
+    try {
+      setLoading(true);
+      const res = await userApi.userLoginAction({ userId, password });
+
+      if (res.status === responseStatusCode.LOGIN_SUCCESS) {
+        // ✅ 토큰(member) 쿠키 저장 (다음 요청들이 Authorization 붙일 수 있게)
+        setCookie('member', JSON.stringify(res.data), 1);
+
+        // ✅ accessToken을 localStorage에도 저장 (추가!)
+      if (res.data?.accessToken) {
+        localStorage.setItem('accessToken', res.data.accessToken);
+      }
+
+        setIsLogin(true);
+        setLoginUser(res.data);
+        //cogoToast.success('로그인 성공');
+        return true;
+      } else {
+        cogoToast.warn(res.message || '로그인 실패');
+        return false;
+      }
+    } catch (err) {
+      setError(err);
+      cogoToast.error('로그인 중 오류 발생');
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const userModifyAtion = async ({ userId, password, password2 }) => {
+    if (password === '') return cogoToast.error('비번을 입력하십시요.');
+    if (password2 === '') return cogoToast.error('비번확인을 입력하십시요.');
+    if (password !== password2) return cogoToast.error('비밀번호와 비밀번호 확인은 일치하여야합니다.');
+
+    const requestBody = { userId, password };
+    const res = await userApi.userModifyAction(requestBody);
+
+    if (res.status === 401 || res.status === 403) {
+      removeCookie('member');
+      setIsLogin(false);
+      setLoginUser(null);
+      //cogoToast.info('로그인이 만료되었습니다. 다시 로그인 해주세요.');
+      return false;
+    }
+
+    try {
+      setLoading(true);
+      const res = await userApi.userModifyAction(requestBody);
+
+      if (res.status === responseStatusCode.UPDATE_USER) {
+        // (선택) 서버가 갱신된 member를 준다면 쿠키도 갱신
+        if (res.data?.accessToken) {
+          setCookie('member', JSON.stringify(res.data), 1);
+        }
+        setIsLogin(true);
+        setLoginUser(res.data);
+        //cogoToast.success('비밀번호 변경 성공');
+        return true;
+      } else {
+        //cogoToast.warn(res.message || '비밀번호 변경 실패');
+        return false;
+      }
+    } catch (err) {
+      setError(err);
+      // ✅ 토큰 만료/권한 문제면 로그아웃 처리
+      if (err?.status === 401 || err?.status === 403) {
+        removeCookie('member');
+        setIsLogin(false);
+        setLoginUser(null);
+      }
+      //cogoToast.error('비밀번호 변경 중 오류 발생');
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const userWriteAtion = async ({ userId, password, password2, name, email }) => {
+    if (userId === '') return cogoToast.error('아이디를 입력하십시요.');
+    if (password === '') return cogoToast.error('비번을 입력하십시요.');
+    if (password2 === '') return cogoToast.error('비번확인을 입력하십시요.');
+    if (name === '') return cogoToast.error('이름을 입력하십시요.');
+    if (email === '') return cogoToast.error('메일을 입력하십시요.');
+    if (password !== password2) return cogoToast.error('비밀번호와 비밀번호 확인은 일치하여야합니다.');
+
+    const requestBody = { userId, password, name, email };
+
+    try {
+      setLoading(true);
+      const res = await userApi.userWriteAction(requestBody);
+
+      if (res.status === responseStatusCode.CREATED_USER) {
+        //cogoToast.success('회원가입 성공');
+        return true;
+      } else {
+        //cogoToast.warn(res.message || '회원가입 실패');
+        return false;
+      }
+    } catch (err) {
+      setError(err);
+      //cogoToast.error('회원가입 중 오류 발생');
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /**
+   * 로그아웃
+   */
+  const logout = async () => {
+    try {
+      setLoading(true);
+      await userApi.userLogoutAction(); // 서버 실패해도 상관없게 처리해도 됨
+    } catch (e) {
+      // ignore
+    } finally {
+      // ✅ 프론트에서 쿠키 삭제가 로그아웃 핵심
+      removeCookie('member');
+       // ✅ localStorage에서도 accessToken 삭제 (추가!)
+    localStorage.removeItem('accessToken');
+      setIsLogin(false);
+      setLoginUser(null);
+      setLoading(false);
+      cogoToast.info('로그아웃 되었습니다');
+    }
+  };
+
+  return {
+    isLogin,
+    loginUser,
+    loading,
+    error,
+    login,
+    logout,
+    userWriteAtion,
+    userModifyAtion,
+    applyLogin,
+  };
+};
