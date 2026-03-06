@@ -52,7 +52,8 @@ Learning Management System (개인 프로젝트)
 
 5. (UML) 클래스 다이어그램 - Class Diagram 
 
-<img width="250"  alt="4번" src="https://github.com/user-attachments/assets/b7431192-a567-4e1b-9cf5-b2d37f461bd0" /><img width="250"  alt="5번" src="https://github.com/user-attachments/assets/ad1ff722-eb5f-4853-92e0-8c65adf3dd78" />
+<img width="300" alt="ERP-class" src="https://github.com/user-attachments/assets/5c1945e4-4c2c-42d5-b7e0-1d0984935b15" />
+
 
 6. ERD Diagram 
 
