@@ -39,7 +39,8 @@ Learning Management System (개인 프로젝트)
 
 3. (UML) 유스케이스 다이어그램 - Usecase Diagram 
 
-<img width="200" alt="유스케이스다이어그램" src="https://github.com/user-attachments/assets/94ae3908-b891-4cf5-acc1-3aa13671ea01" />
+<img width="200" alt="ERP-usecase" src="https://github.com/user-attachments/assets/5e625f36-4afa-4bd5-972d-9cedbbbe05b0" />
+
 
 4. (UML) 시퀀스 다이어그램 - Sequence Diagram 
 
