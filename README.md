@@ -45,7 +45,9 @@ Learning Management System (개인 프로젝트)
 
 4. (UML) 시퀀스 다이어그램 - Sequence Diagram 
 
-<img width="300" alt="ERP-sequence인사" src="https://github.com/user-attachments/assets/de6b0154-3516-447e-955f-824635dd7a78" />           <img width="300" alt="ERP-sequence물류" src="https://github.com/user-attachments/assets/43fe992a-7b0a-435a-8c7a-d10c1d194341" />
+<img width="300" alt="ERP-sequence인사" src="https://github.com/user-attachments/assets/de6b0154-3516-447e-955f-824635dd7a78" />   
+
+<img width="300" alt="ERP-sequence물류" src="https://github.com/user-attachments/assets/43fe992a-7b0a-435a-8c7a-d10c1d194341" />
 
 
 5. (UML) 클래스 다이어그램 - Class Diagram 
