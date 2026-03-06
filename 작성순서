@@ -1,0 +1,11 @@
+1. 마리아db 설치
+2. 스키마 생성
+3. VS CODE 프로젝트 생성
+4. build.gradle, applications.properties 변경
+5. 업무롤
+   HR_USER (인사): 인사 기록, 근태 관리 접근 가능. (재무 조회 불가)
+   FINANCE_USER (회계): 매출, 매입, 전표 관리 접근 가능. (인사 조회 불가)
+   STOCK_USER (물류): 재고 입출고, 창고 현황 접근 가능.
+6.인사 모듈 (Employee)
+  회계 모듈 (Account/Ledger)
+  물류/재고 모듈 (Product/Inventory)
