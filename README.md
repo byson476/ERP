@@ -132,7 +132,7 @@ Learning Management System (개인 프로젝트)
 
 | Category | Tech | Usage | Badge |
 |---|---|---|---|
-| RDBMS | Oracle DB | Schema / Relations / Transaction | ![Oracle](https://img.shields.io/badge/Oracle-Database-F80000?style=for-the-badge&logo=oracle&logoColor=white) |
+| RDBMS | MariaDB | Relational DB / SQL / Transaction | ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white) |
 
 ---
 
