@@ -19,7 +19,8 @@
 ---
 
 ## 프로젝트 소개
-**ERP**는 JWT의 인증을 이용해 사용자에게 권한을 부여하고, 상품의 재고사항을 실시간으로 관리하는 프로그램입니다.  
+**ERP**는 JWT의 인증을 이용해 사용자에게 권한을 부여하고, 상품의 재고사항을 실시간으로 관리하는 프로그램입니다.
+Mermaid로 설계했습니다.
 프론트는 veus.js의 React 기반으로 UX를 구성하고, 백엔드는 Spring Boot REST API로 도메인별 책임을 분리하고 MariaDb를 썼습니다.
 
 ---
@@ -39,12 +40,12 @@ Learning Management System (개인 프로젝트)
 
 3. (UML) 유스케이스 다이어그램 - Usecase Diagram 
 
-<img width="200" alt="ERP-usecase" src="https://github.com/user-attachments/assets/5e625f36-4afa-4bd5-972d-9cedbbbe05b0" />
+<img width="300" alt="ERP-usecase" src="https://github.com/user-attachments/assets/5e625f36-4afa-4bd5-972d-9cedbbbe05b0" />
 
 
 4. (UML) 시퀀스 다이어그램 - Sequence Diagram 
 
-<img width="200" alt="씨퀀스 다이어그램" src="https://github.com/user-attachments/assets/9ecfa7b0-9ba9-4340-a79a-923528d2bc89" />
+<img width="300" alt="ERP-sequence인사" src="https://github.com/user-attachments/assets/de6b0154-3516-447e-955f-824635dd7a78" />           <img width="300" alt="ERP-sequence물류" src="https://github.com/user-attachments/assets/43fe992a-7b0a-435a-8c7a-d10c1d194341" />
 
 
 5. (UML) 클래스 다이어그램 - Class Diagram 
