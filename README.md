@@ -21,7 +21,7 @@
 ## 프로젝트 소개
 **ERP**는 JWT의 인증을 이용해 사용자에게 권한을 부여하고, 상품의 재고사항을 실시간으로 관리하는 프로그램입니다.
 Mermaid로 설계했습니다.
-프론트는 veus.js의 React 기반으로 UX를 구성하고, 백엔드는 Spring Boot REST API로 도메인별 책임을 분리하고 MariaDb를 썼습니다.
+프론트는 veu.js의 React 기반으로 UX를 구성하고, 백엔드는 Spring Boot REST API로 도메인별 책임을 분리하고 MariaDb를 썼습니다.
 
 ---
 
