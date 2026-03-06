@@ -40,19 +40,19 @@ Learning Management System (개인 프로젝트)
 
 3. (UML) 유스케이스 다이어그램 - Usecase Diagram 
 
-<img width="300" alt="ERP-usecase" src="https://github.com/user-attachments/assets/5e625f36-4afa-4bd5-972d-9cedbbbe05b0" />
+<img width="1214" height="627" alt="ERP-usecase" src="https://github.com/user-attachments/assets/5e625f36-4afa-4bd5-972d-9cedbbbe05b0" />
 
 
 4. (UML) 시퀀스 다이어그램 - Sequence Diagram 
 
-<img width="300" alt="ERP-sequence인사" src="https://github.com/user-attachments/assets/de6b0154-3516-447e-955f-824635dd7a78" />   
+<img width="1214" height="627" alt="ERP-sequence인사" src="https://github.com/user-attachments/assets/de6b0154-3516-447e-955f-824635dd7a78" />   
 
-<img width="300" alt="ERP-sequence물류" src="https://github.com/user-attachments/assets/43fe992a-7b0a-435a-8c7a-d10c1d194341" />
+<img width="1214" height="627" alt="ERP-sequence물류" src="https://github.com/user-attachments/assets/43fe992a-7b0a-435a-8c7a-d10c1d194341" />
 
 
 5. (UML) 클래스 다이어그램 - Class Diagram 
 
-<img width="300" alt="ERP-class" src="https://github.com/user-attachments/assets/5c1945e4-4c2c-42d5-b7e0-1d0984935b15" />
+<img width="1214" height="627" alt="ERP-class" src="https://github.com/user-attachments/assets/5c1945e4-4c2c-42d5-b7e0-1d0984935b15" />
 
 
 6. ERD Diagram 
@@ -62,7 +62,8 @@ Learning Management System (개인 프로젝트)
 <img width="1214" height="627" alt="ERP-erd로지컬" src="https://github.com/user-attachments/assets/cbdd869f-04af-49ef-bc1c-db9e173058dc" />
 
 2. physical.jpg
-<img width="1214" height="627" alt="limitree-physical" src="https://github.com/user-attachments/assets/54ee9cee-91f8-40e6-b4ad-eed218c80821" />
+<img width="1214" height="627" alt="ERP-erd피지컬" src="https://github.com/user-attachments/assets/d64ffd2f-892c-4748-a8f5-fa488bd0850e" />
+
 
 
 
