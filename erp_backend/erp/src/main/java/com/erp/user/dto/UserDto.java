@@ -1,4 +1,4 @@
-package com.erp.dto;
+package com.erp.user.dto;
 
 import java.util.ArrayList;
 import java.util.HashMap;

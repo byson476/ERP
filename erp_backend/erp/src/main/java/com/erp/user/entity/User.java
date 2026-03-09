@@ -3,7 +3,7 @@ package com.erp.user.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.erp.dto.UserDto;
+import com.erp.user.dto.UserDto;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
