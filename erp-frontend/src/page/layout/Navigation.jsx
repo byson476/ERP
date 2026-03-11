@@ -20,7 +20,7 @@ export default defineComponent({
             <>
               {/* 로그인 전 */}
               <li>
-                <RouterLink to="/user_login_form">로그인</RouterLink>
+                <RouterLink to="/erp_login_form">로그인</RouterLink>
               </li>
               <li>
                 <RouterLink to="/user_write_form">회원가입</RouterLink>

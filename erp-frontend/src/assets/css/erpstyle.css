@@ -231,22 +231,49 @@ tbody tr:hover{
    INPUT
 ========================= */
 
+/* 로그인 입력칸 */
+
+/* 로그인 입력 라인 */
 .input-group{
+  display:flex;
+  align-items:center;
   margin-bottom:15px;
 }
 
+/* label */
 .input-group label{
-  display:block;
-  margin-bottom:5px;
-  font-size:13px;
+  width:90px;          /* label 고정폭 */
+  font-size:14px;
+  color:#333;
 }
 
-.input-group input,
-.input-group select{
-  width:100%;
+/* input */
+.input-group input{
+  width:220px;
   padding:8px;
   border-radius:6px;
   border:1px solid #ddd;
+}
+
+.login-btn{
+  width:310px;   /* label(90) + input(220) */
+  margin-top:10px;
+}
+
+.login-title{
+  width:310px;
+  text-align:right;
+  margin-bottom:30px;
+  color:#1f3c88;
+}
+
+.btn-primary{
+  background:#1f3c88;
+  color:white;
+}
+
+.btn-primary:hover{
+  background:#16306e; /* hover 시 조금 더 어둡게 */
 }
 
 /* =========================

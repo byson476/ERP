@@ -1,4 +1,4 @@
-export const UserMainPage = (props) => {
+export const ErpMainPage = (props) => {
   return (
     <img src="/image/erp.png"
       alt="메인이미지"

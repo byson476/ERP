@@ -34,7 +34,7 @@ import lombok.Setter;
 public class User {
 
 	@Id
-	@Column(name = "USERID", length = 50) // ID 길이를 명확히 제한 (인덱스 성능)
+	@Column(name = "USERID", length = 100) // ID 길이를 명확히 제한 (인덱스 성능)
 	private String userId;
 
 	@Column(nullable = false) // 비밀번호는 필수
