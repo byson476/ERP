@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { UserMainPage } from '../page/user/UserMainPage';
+import { UserMainPage } from '../page/ErpMainPage';
 // ... 나머지 페이지들도 import 하세요
 
 const routes = [

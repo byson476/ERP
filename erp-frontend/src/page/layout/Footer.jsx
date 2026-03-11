@@ -3,7 +3,7 @@ function Footer() {
   return (
     <div id="footer">
       <p style={{ textAlign: 'center' }}>
-        Copyright (©) By Kimkyoungho.[김경호] All rights reserved.
+        Copyright (©) By bySon.[손보연] All rights reserved.
       </p>
     </div>
   );

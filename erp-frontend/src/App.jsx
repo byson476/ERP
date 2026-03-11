@@ -5,6 +5,8 @@ import Navigation from "./page/layout/Navigation";
 import Footer from "./page/layout/Footer";
 import { userLoginCheck } from "./util/loginCheck.js";
 
+import "./assets/css/erpstyle.css";
+
 export default defineComponent({
   setup() {
     const router = useRouter();
@@ -25,15 +27,19 @@ export default defineComponent({
 
     return () => (
       <>
-        <Header />
-        <Navigation />
-        <div id="wrapper">
-          <div id="content">
-            {/* React의 <Routes> 대신 <RouterView> 사용 */}
-            <RouterView />
-          </div>
-        </div>
-        <Footer />
+<Header />
+
+<div id="wrapper">
+
+  <Navigation />
+
+  <div id="content">
+    <RouterView />
+  </div>
+
+</div>
+
+<Footer />
       </>
     );
   }

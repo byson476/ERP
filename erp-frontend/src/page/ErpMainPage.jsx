@@ -1,8 +1,6 @@
-// src/page/UserMainPage.jsx
 export const UserMainPage = (props) => {
   return (
-    <img 
-      src="../image/enter.png"
+    <img src="/image/erp.png"
       alt="메인이미지"
       width="540"
       height="350px"
